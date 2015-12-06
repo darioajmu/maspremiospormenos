@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'welcome/index'
+  devise_for :usuarios
   root 'inicios#index'
   resources :inicios#, path: "inicio"
 end
