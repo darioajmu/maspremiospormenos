@@ -48,3 +48,5 @@ gem 'mysql2', '~> 0.3.18'
 gem 'devise', '~> 3.4.1'
 
 gem 'devise_security_extension', '~>  0.9.2'
+
+gem 'rails-boilerplate', '~>  0.1.9'
