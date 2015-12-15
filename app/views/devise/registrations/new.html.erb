@@ -4,22 +4,22 @@
   <%= devise_error_messages! %>
 
   <div class="large-6 columns">
-    <%= f.label :nombre_de_usuario %><br />
+    <%= f.label :nombre_de_usuario %>
     <%= f.text_field :username, autofocus: true %>
   </div>
 
   <div class="large-6 columns">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
  <div class="large-6 columns">
   <%= f.label :tipo_de_documento %>
-  <%= f.collection_select(:tiposdocumento_id, Tiposdocumento.noborrada, :id, :denom, {prompt: "Selecciona un Tipo de Documento"}) %>
+  <%= f.collection_select(:tiposdocumento_id, Tiposdocumento.all, :id, :denom, {prompt: "Selecciona un Tipo de Documento"}) %>
   </div>
 
   <div class="large-6 columns">
-    <%= f.label :documento %><br />
+    <%= f.label :documento %>
     <%= f.email_field :documento, autofocus: true %>
   </div>
 
