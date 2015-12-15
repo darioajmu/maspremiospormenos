@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206194118) do
+ActiveRecord::Schema.define(version: 20151214185946) do
+
+  create_table "tiposdocumentos", force: :cascade do |t|
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "codigo",      limit: 255
+    t.string   "nombre",      limit: 255
+    t.date     "fechadebaja"
+  end
 
   create_table "usuarios", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -26,6 +34,9 @@ ActiveRecord::Schema.define(version: 20151206194118) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username",               limit: 255
+    t.integer  "tiposdocumento_id",      limit: 4
+    t.string   "documento",              limit: 255
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
