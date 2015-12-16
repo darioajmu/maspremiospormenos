@@ -9,23 +9,37 @@
       <%= javascript_include_tag "vendor/modernizr" %>
       <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
-
-      <% if usuario_signed_in? %>
-        Logged in as <strong><%= current_user.username %></strong>.
-        <%= link_to 'Edit profile', edit_usuario_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Desconectar", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Registrarse", new_usuario_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Conectarse", new_usuario_session_path, :class => 'navbar-link'  %>
-      <% end %>
   </head>
 
   <body>
+    <nav class="top-bar" data-topbar role="navigation"  data-options="is_hover: true">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Desarrollo</a></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section" >
+      <ul class="right">
+        <li class="divider"></li>
+        <li>
+          <% if usuario_signed_in? %>
+        </li>
+        <li class="divider"></li>
+        <li class="has-dropdown not-click "><a href=""><%= current_user.username %></a>
+          <% else %>
+        <li><%= link_to "Conectar", new_usuario_session_path, :class => 'navbar-link'  %></li>
+          <% end %>
+      </ul>
+
+    </section>
+ </nav>
+
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>
   <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
+    <div class="large-12 medium-12 columns small-12 columns" >
   <% end %>
   <%= yield %>
   </body>
