@@ -15,7 +15,7 @@
 
  <div class="large-6 columns">
   <%= f.label :tipo_de_documento %>
-  <%= f.collection_select(:tiposdocumento_id, Tiposdocumento.all, :id, :denom, {prompt: "Selecciona un Tipo de Documento"}) %>
+  <%= f.collection_select(:tiposdocumento_id, Tiposdocumento.where(fechadebaja: nil).order(:nombre), :id, :nombre, {prompt: "Selecciona un Tipo de Documento"}) %>
   </div>
 
   <div class="large-6 columns">
