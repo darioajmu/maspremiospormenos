@@ -2,15 +2,15 @@ class Usuario < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :authentication_keys => [:login]
 
   validates :username,
   :presence => true,
   :uniqueness => {
   :case_sensitive => false
   }
-  validates_format_of :username, :with => /\A[a-zA-Z0-9]+\z/
-  validate :validate_username
+  validates_format_of :username, :with => /\A[a-zA-Z0-9_\.]+\z/
+  #before_save :validate_username
 
   def login=(login)
     @login = login
@@ -31,8 +31,13 @@ def self.find_for_database_authentication(warden_conditions)
 
 
 def validate_username
-  if User.where(email: username).exists?
+  if Usuario.where(email: username).count>0
     errors.add(:username, :invalid)
   end
+end
+
+protected
+def confirmation_required?
+  true
 end
 end

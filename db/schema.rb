@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214185946) do
+ActiveRecord::Schema.define(version: 20151216211038) do
 
   create_table "tiposdocumentos", force: :cascade do |t|
     t.datetime "created_at",              null: false
@@ -37,8 +37,12 @@ ActiveRecord::Schema.define(version: 20151214185946) do
     t.string   "username",               limit: 255
     t.integer  "tiposdocumento_id",      limit: 4
     t.string   "documento",              limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true, using: :btree
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 

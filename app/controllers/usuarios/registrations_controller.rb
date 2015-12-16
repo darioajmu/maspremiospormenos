@@ -48,7 +48,7 @@ class Usuarios::RegistrationsController < Devise::RegistrationsController
     end
 
     def objeto_parametros
-    	params.require(:usuario).permit(:username, :email, :encrypted_password, :password, :tiposdocumento_id, :documento)
+    	params.require(:usuario).permit(:username, :email, :password, :tiposdocumento_id, :documento)
     end
 
 end
