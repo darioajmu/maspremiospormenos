@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "+ Premios por -!!" %></title>
       <%= stylesheet_link_tag    "application" %>
       <%= javascript_include_tag "vendor/modernizr" %>
       <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -13,10 +13,10 @@
       <% if usuario_signed_in? %>
         Logged in as <strong><%= current_user.username %></strong>.
         <%= link_to 'Edit profile', edit_usuario_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
+        <%= link_to "Desconectar", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
       <% else %>
-        <%= link_to "Sign up", new_usuario_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_usuario_session_path, :class => 'navbar-link'  %>
+        <%= link_to "Registrarse", new_usuario_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Conectarse", new_usuario_session_path, :class => 'navbar-link'  %>
       <% end %>
   </head>
 
