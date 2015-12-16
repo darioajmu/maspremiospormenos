@@ -10,29 +10,36 @@
       <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
   </head>
-
-  <body>
-    <nav class="top-bar" data-topbar role="navigation"  data-options="is_hover: true">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="#">Desarrollo</a></h1>
-        </li>
-      </ul>
-      <section class="top-bar-section" >
+<body>
+  <nav class="top-bar" data-topbar role="navigation"  data-options="is_hover: true">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">Desarrollo</a></h1>
+      </li>
+    </ul>
+    <section class="top-bar-section" >
       <ul class="right">
         <li class="divider"></li>
         <li>
           <% if usuario_signed_in? %>
         </li>
         <li class="divider"></li>
-        <li class="has-dropdown not-click "><a href=""><%= current_user.username %></a>
+        <li class="has-dropdown not-click "><a href=""><%= current_usuario.username %></a>
+          <ul class="dropdown">
+            <li><label>Menú de usuario</label></li>
+            <li class="divider"></li>
+            <li class="name"><% link_to 'Editar mi informacion de usuario', edit_usuario_path(current_usuario.id) %></li>
+            <li>
+              <%= link_to "Desconectar", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
+            </li>
+          </ul>
+        </li>
           <% else %>
-        <li><%= link_to "Conectar", new_usuario_session_path, :class => 'navbar-link'  %></li>
+            <li><%= link_to "Conectar", new_usuario_session_path, :class => 'navbar-link'  %></li>
           <% end %>
-      </ul>
-
-    </section>
- </nav>
+        </ul>
+      </section>
+    </nav>
 
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
