@@ -1,7 +1,0 @@
-<p>Hola <%= @resource.username %>!</p>
-
-<p>Tu cuenta ha sido bloqueada por un elevado número de intentos de conexión erroneos.</p>
-
-<p>Pincha en el link que aparece a continuación para desbloquear tu cuenta:</p>
-
-<p><%= link_to 'Desbloquear mi cuenta', unlock_url(@resource, unlock_token: @token) %></p>
