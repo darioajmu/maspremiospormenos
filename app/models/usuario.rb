@@ -4,4 +4,7 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :tiposdocumento_id, presence: true
+  validates :documento, presence: true
+
 end
