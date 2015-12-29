@@ -7,7 +7,6 @@
     <title><%= content_for?(:title) ? yield(:title) : "+ Premios por -!!" %></title>
       <%= stylesheet_link_tag    "application" %>
       <%= javascript_include_tag "vendor/modernizr" %>
-      <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
   </head>
 <body>
@@ -46,8 +45,10 @@
   <% end %>
   <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
-    <div class="large-12 medium-12 columns small-12 columns" >
   <% end %>
+
+  <div class="large-12 medium-12 columns small-12 columns" >
   <%= yield %>
+</div>
   </body>
 </html>
