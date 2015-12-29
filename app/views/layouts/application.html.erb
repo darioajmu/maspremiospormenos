@@ -34,7 +34,7 @@
           </ul>
         </li>
           <% else %>
-            <li><%= link_to "Conectar", new_usuario_session_path, :class => 'navbar-link'  %></li>
+            <li><%= link_to "Conectar", new_usuario_session_path, :remote => true, "data-reveal-id" => "sign-in", class: "tiny button radius"  %></li>
           <% end %>
         </ul>
       </section>
@@ -50,5 +50,21 @@
   <div class="large-12 medium-12 columns small-12 columns" >
   <%= yield %>
 </div>
-  </body>
+
+
+<li><%= link_to "Conectar", new_usuario_session_path, :remote => true, "data-reveal-id" => "sign-in", class: "tiny button radius"  %></li>
+<a href="#" data-reveal-id="myModal">Click Me For A Modal</a>
+	</body>
+  <div id="sign-in" class="reveal-modal" data-reveal>
+  <div id="cerrar" class="close-reveal-modal">&#215;</div>
+  <div id="signIn"></div>
+  </div>
+
+
+  <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2 id="modalTitle">Awesome. I have it.</h2>
+    <p class="lead">Your couch.  It is mine.</p>
+    <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>
 </html>
