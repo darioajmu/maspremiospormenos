@@ -4,51 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "+ Premios por -!!" %></title>
-      <%= stylesheet_link_tag    "application" %>
-      <%= javascript_include_tag "vendor/modernizr" %>
-      <%= csrf_meta_tags %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
   </head>
-<body>
-  <nav class="top-bar" data-topbar role="navigation"  data-options="is_hover: true">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Desarrollo</a></h1>
-      </li>
-    </ul>
-    <section class="top-bar-section" >
-      <ul class="right">
-        <li class="divider"></li>
-        <li>
-          <% if usuario_signed_in? %>
-        </li>
-        <li class="divider"></li>
-        <li class="has-dropdown not-click "><a href=""><%= current_usuario.username %></a>
-          <ul class="dropdown">
-            <li><label>Menú de usuario</label></li>
-            <li class="divider"></li>
-            <li class="name"><% link_to 'Editar mi informacion de usuario', edit_usuario_path(current_usuario.id) %></li>
-            <li>
-              <%= link_to "Desconectar", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
-            </li>
-          </ul>
-        </li>
-          <% else %>
-            <li><%= link_to "Conectar", new_usuario_session_path%></li>
-          <% end %>
-        </ul>
-      </section>
-    </nav>
 
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
+  <body>
 
-  <div class="large-12 medium-12 columns small-12 columns" >
-  <%= yield %>
-</div>
-	</body>
+    <%= yield %>
+
+  </body>
 </html>
