@@ -37,7 +37,9 @@
             </ul>
           </li>
             <% else %>
-              <li><%= link_to "Conectar", new_usuario_session_path, :remote => true, "data-reveal-id" => "sign-in" %></li>
+
+            <li><%= link_to "Conectar c/m", new_usuario_session_path, :remote => true, "data-reveal-id" => "sign-in" %></li>
+          <li><%= link_to "Conectar s/m", new_usuario_session_path%></li>
             <% end %>
           </ul>
         </section>
