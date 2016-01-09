@@ -1,13 +1,23 @@
-<%= link_to "Registrarse", new_registration_path(resource_name), :remote => true, "data-reveal-id" => "sign-up"  %><br />
+<%= link_to "Registrarse", new_registration_path(resource_name), :remote => true, "data-reveal-id" => "sign-up"%><br />
 
-<%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name) %><br />
+<%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name), :remote => true, "data-reveal-id" => "new_pass"%><br />
 
-<%= link_to "¿No has recibido las instrucciones de confirmación?", new_confirmation_path(resource_name) %><br />
+<%= link_to "¿No has recibido las instrucciones de confirmación?", new_confirmation_path(resource_name), :remote => true, "data-reveal-id" => "new_confirmation"%><br />
 
 
 
 
 <div id="sign-up" class="reveal-modal" data-reveal>
   <%= render ('devise/registrations/new') %>
+<div id="cerrar" class="close-reveal-modal">&#215;</div>
+</div>
+
+<div id="new_pass" class="reveal-modal" data-reveal>
+  <%= render ('devise/passwords/new') %>
+<div id="cerrar" class="close-reveal-modal">&#215;</div>
+</div>
+
+<div id="new_confirmation" class="reveal-modal" data-reveal>
+  <%= render ('devise/confirmations/new') %>
 <div id="cerrar" class="close-reveal-modal">&#215;</div>
 </div>

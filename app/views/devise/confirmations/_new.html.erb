@@ -1,0 +1,14 @@
+<h2>Reenviar email de confirmación de cuenta</h2>
+
+<%= form_for("usuario", url: usuario_confirmation_path, html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label "Nombre de Usuario o Email" %><br />
+    <%= f.text_field :login%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Reenviar email de confirmación de cuenta" %>
+  </div>
+<% end %>
