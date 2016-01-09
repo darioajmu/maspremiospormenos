@@ -2,12 +2,12 @@
 
 <%= form_for("usuario", url: usuario_session_path) do |f| %>
   <div class="field">
-    <%= f.label "Nombre de Usuario o Email" %><br />
+    <%= f.label "Nombre de Usuario o Email" %>
     <%= f.text_field :login%>
   </div>
 
   <div class="field">
-    <%= f.label "Contraseña" %><br />
+    <%= f.label "Contraseña" %>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
