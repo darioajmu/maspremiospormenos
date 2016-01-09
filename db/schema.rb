@@ -14,16 +14,16 @@
 ActiveRecord::Schema.define(version: 20160109162521) do
 
   create_table "provincias", force: :cascade do |t|
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "codigo",      limit: 255
     t.string   "nombre",      limit: 255
     t.date     "fechadebaja"
   end
 
   create_table "tiposdocumentos", force: :cascade do |t|
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "codigo",      limit: 255
     t.string   "nombre",      limit: 255
     t.date     "fechadebaja"
