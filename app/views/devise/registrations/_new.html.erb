@@ -1,0 +1,85 @@
+  <div class="large-12 columns"><h2>Alta de Usuario</h2></div>
+
+  <%= form_for("usuario", url: usuario_registration_path) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="large-4 columns">
+    <%= f.label "Email" %>
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Nombre de Usuario" %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Fecha de Nacimiento" %>
+    <%= f.date_field :fechadenacimiento%>
+  </div>
+
+  <div class="large-4 columns">
+    <%= f.label "Tipo de Documento" %>
+    <%= f.collection_select(:tiposdocumento_id, Tiposdocumento.where(fechadebaja: nil),  :id, :nombre, {prompt: "Selecciona un Tipo de Documento"}) %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Documento" %>
+    <%= f.text_field :documento %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "sexo" %>
+    <%= f.text_field :sexo %>
+  </div>
+
+  <div class="large-4 columns">
+    <%= f.label "Nombre" %>
+    <%= f.text_field :nombre%>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Primer Apellido" %>
+    <%= f.text_field :apellido1 %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Segundo Apellido" %>
+    <%= f.text_field :apellido2 %>
+  </div>
+
+  <div class="large-4 columns">
+    <%= f.label "Provincias" %>
+    <%= f.collection_select(:provincia_id, Provincia.where(fechadebaja: nil).order(:nombre),  :id, :nombre, {prompt: "Selecciona una Provincia"}) %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Ciudad" %>
+    <%= f.text_field :ciudad %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Codigo Postal" %>
+    <%= f.number_field :codigopostal %>
+  </div>
+
+  <div class="large-6 columns">
+    <%= f.label "Dirección" %>
+    <%= f.text_field :direccion %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.label "Más datos de dirección" %>
+    <%= f.text_field :direccioncompleta %>
+  </div>
+
+
+  <div class="large-4 columns">
+    <%= f.label "Contraseña" %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Repite la contraseña" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.label "Movil" %>
+    <%= f.number_field :movil %>
+
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Registrarme" %>
+  </div>
+<% end %>

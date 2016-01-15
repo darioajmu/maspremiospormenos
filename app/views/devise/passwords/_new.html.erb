@@ -1,0 +1,14 @@
+<h2>¿Has olvidado tu contraseña?</h2>
+
+<%= form_for("usuario", url: usuario_password_path, html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label "Nombre de Usuario o Email" %><br />
+    <%= f.text_field :login%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Envíame una nueva contraseña" %>
+  </div>
+<% end %>

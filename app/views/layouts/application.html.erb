@@ -1,27 +1,65 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Maspremiospormenos</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %><p class="navbar-text pull-right">
-<% if usuario_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_usuario_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_usuario_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_usuario_session_path, :class => 'navbar-link'  %>
-<% end %>
-</head>
-<body>
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-<%= yield %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-</body>
+    <title><%= content_for?(:title) ? yield(:title) : "+ Premios por -!!" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application"%>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="top-bar" data-topbar role="navigation"  data-options="is_hover: true">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">Desarrollo</a></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section" >
+        <ul class="right">
+          <li class="divider"></li>
+          <li>
+            <% if usuario_signed_in? %>
+          </li>
+          <li class="divider"></li>
+          <li class="has-dropdown not-click "><a href=""><%= current_usuario.username %></a>
+            <ul class="dropdown">
+              <li><label>Menú de usuario</label></li>
+              <li class="divider"></li>
+              <li class="name"><% link_to 'Editar mi informacion de usuario', edit_usuario_path(current_usuario.id) %></li>
+              <li>
+                <%= link_to "Desconectar", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
+              </li>
+            </ul>
+          </li>
+            <% else %>
+            <li><%= link_to "Conectar", new_usuario_session_path, :remote => true, "data-reveal-id" => "sign-in" %></li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
+
+
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <div class="large-12 medium-12 columns small-12 columns" >
+
+    <%= yield %>
+  </div>
+
+  <div id="sign-in" class="reveal-modal" data-reveal>
+    <%= render ('devise/sessions/new') %>
+  <div id="cerrar" class="close-reveal-modal">&#215;</div>
+  </div>
+
+  </body>
 </html>
