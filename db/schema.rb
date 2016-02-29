@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109162521) do
+ActiveRecord::Schema.define(version: 20160229191309) do
+
+  create_table "premios", force: :cascade do |t|
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "codigo",         limit: 255
+    t.string   "nombre",         limit: 255
+    t.date     "fechadebaja"
+    t.integer  "tipospremio_id", limit: 4
+  end
 
   create_table "provincias", force: :cascade do |t|
     t.datetime "created_at"
@@ -24,6 +33,14 @@ ActiveRecord::Schema.define(version: 20160109162521) do
   create_table "tiposdocumentos", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "codigo",      limit: 255
+    t.string   "nombre",      limit: 255
+    t.date     "fechadebaja"
+  end
+
+  create_table "tipospremios", force: :cascade do |t|
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "codigo",      limit: 255
     t.string   "nombre",      limit: 255
     t.date     "fechadebaja"

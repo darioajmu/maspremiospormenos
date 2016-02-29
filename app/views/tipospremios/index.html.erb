@@ -1,0 +1,21 @@
+<h1>Tipos de Premios</h1>
+
+<%= link_to "Nuevo Tipo de Premio", {:action => 'new', :controller => 'tipospremios'}, class: "small success button radius" %>
+
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Codigo</td>
+        <td>Nombre</td>
+        <td>Fecha de Baja</td>
+      </tr>
+    </thead>
+    <% @tipospremios.each do |t|%>
+      <tr>
+        <td><%= t.id %></td>
+        <td><%= t.codigo%></td>
+        <td><%= t.nombre %></td>
+        <td><%= t.fechadebaja %></td>
+      </tr>
+    <%end%>

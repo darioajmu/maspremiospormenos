@@ -1,0 +1,34 @@
+<%= form_for @tipospremio do |f| %>
+
+<% if @tipospremio.errors.any? %>
+
+<div>
+    <error style="font-size:200%;"><%= pluralize(@tipospremio.errors.count, "Error") %>, evita/n que el registro sea guardado:</error>
+    <ul>
+    <% @tipospremio.errors.full_messages.each do |msg| %>
+      <li ><%= msg %></li>
+    <% end %>
+    </ul>
+</div>
+<% end %>
+
+  <div class="row fullWidth">
+    <div class="large-4 columns">
+      <%= f.label :codigo, "Codigo" %>
+      <%= f.text_field:codigo%>
+    </div>
+    <div class="large-4  columns">
+      <%= f.label :nombre, "Nombre" %>
+      <%= f.text_field:nombre %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :fechadebaja, "Fecha de Baja" %>
+      <%= f.date_field:fechadebaja %>
+    </div>
+  </div>
+  <div class="row fullWidth">
+    <div class="large-12 columns">
+      <%= f.submit "Enviar", class: "tiny button radius" %>
+    </div>
+  </div>
+<% end %>
