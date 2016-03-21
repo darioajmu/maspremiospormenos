@@ -30,7 +30,9 @@
             <ul class="dropdown">
               <li><label>Menú de usuario</label></li>
               <li class="divider"></li>
-              <li class="name"><% link_to 'Editar mi informacion de usuario', edit_usuario_path(current_usuario.id) %></li>
+              <li>
+                <%= link_to 'Editar mi informacion de usuario', edit_usuario_path(current_usuario.id) %>
+              </li>
               <li>
                 <%= link_to "Desconectar", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
               </li>
