@@ -71,24 +71,25 @@
 </div>
 <div class="large-4 columns">
   <%= f.label "Repite la nueva contraseña" %>
-  <%= f.text_field :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
 </div>
 <div class="large-4 columns">
     <%= f.label "Contraseña actual" %> <i>(introduce tu contraseña para confirmar los cambios)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, value: nil %>
 </div>
 <div class="large-4 columns">
   <%= f.label "Movil" %>
   <%= f.number_field :movil%>
 </div>
 
-<div class="actions" class="large-12 columns">
-  <%= f.submit "Update" %>
+<div class="large-12 columns">
+  <%= f.submit "Enviar", class: 'button radius small' %>
+  <%= link_to "Atrás", :back, class: 'button radius small' %>
 </div>
 <% end %>
 <div class="large-12 columns">
 <h3>Cancelar mi cuenta</h3>
-
-<p>Si quieres eliminar tu cuenta (¿¡¿¡¿QUIÉN QUERRÍA ALGO ASÍ?!?!?) pincha en el siguiente enlace <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Si quieres eliminar tu cuenta (¿¡¿¡¿QUIÉN QUERRÍA ALGO ASÍ?!?!?) pincha en el siguiente botón:
+  <p> <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás segur@?" }, method: :delete, class: 'button radius small' %>
+    <%= link_to "Atrás", :back, class: 'button radius small' %>
 </div>
-<%= link_to "Atrás", :back %>
