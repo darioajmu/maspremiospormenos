@@ -1,0 +1,2 @@
+class TipoPremio < SimpleObject
+end

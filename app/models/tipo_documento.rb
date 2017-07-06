@@ -1,0 +1,2 @@
+class TipoDocumento < SimpleObject
+end
