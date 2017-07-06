@@ -5,7 +5,7 @@ class Usuario < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :authentication_keys => [:login]
   attr_accessor :login
 
-  validates :tiposdocumento_id, presence: true
+  validates :tipo_documento_id, presence: true
   validates :username, presence: true, :uniqueness => {:case_sensitive => false}
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validates :documento, presence: true

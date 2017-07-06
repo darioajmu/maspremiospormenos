@@ -18,7 +18,7 @@
 
   <div class="large-4 columns">
     <%= f.label "Tipo de Documento" %>
-    <%= f.collection_select(:tiposdocumento_id, Tiposdocumento.where(fechadebaja: nil),  :id, :nombre, {prompt: "Selecciona un Tipo de Documento"}) %>
+    <%= f.collection_select(:tipo_documento_id, TipoDocumento.all.order("LOWER(nombre)"),  :id, :nombre, {prompt: "Selecciona un Tipo de Documento"}) %>
   </div>
   <div class="large-4 columns">
     <%= f.label "Documento" %>
@@ -44,7 +44,7 @@
 
   <div class="large-4 columns">
     <%= f.label "Provincias" %>
-    <%= f.collection_select(:provincia_id, Provincia.where(fechadebaja: nil).order(:nombre),  :id, :nombre, {prompt: "Selecciona una Provincia"}) %>
+    <%= f.collection_select(:provincia_id, Provincia.all.order("LOWER(nombre)"),  :id, :nombre, {prompt: "Selecciona una Provincia"}) %>
   </div>
   <div class="large-4 columns">
     <%= f.label "Ciudad" %>

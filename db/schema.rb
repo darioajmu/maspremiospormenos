@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706192753) do
+ActiveRecord::Schema.define(version: 20170706194713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "premios", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "codigo"
     t.string   "nombre"
+    t.integer  "tipo_premio_id"
   end
 
   create_table "provincias", force: :cascade do |t|
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170706192753) do
     t.date     "fechadenacimiento"
     t.string   "sexo"
     t.decimal  "movil"
+    t.integer  "tipo_documento_id"
   end
 
   add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true, using: :btree

@@ -20,6 +20,6 @@ end
 def objeto_parametros
 	params.require(:usuario).permit(:username, :email, :encrypted_password, :password, :apellido1,
 	 :apellido2, :ciudad, :codigopostal, :nombre, :direccion, :direccioncompleta, :codigo, :documento,
- 	 :fechadenacimiento, :movil, :provincia_id, :sexo, :tiposdocumento_id, :password_confirmation)
+ 	 :fechadenacimiento, :movil, :provincia_id, :sexo, :tipo_documento_id, :password_confirmation)
 end
 end
