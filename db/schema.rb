@@ -11,18 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229191309) do
+ActiveRecord::Schema.define(version: 20170706192753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "premios", force: :cascade do |t|
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "codigo"
     t.string   "nombre"
-    t.date     "fechadebaja"
-    t.integer  "tipospremio_id"
   end
 
   create_table "provincias", force: :cascade do |t|
@@ -30,23 +28,14 @@ ActiveRecord::Schema.define(version: 20160229191309) do
     t.datetime "updated_at"
     t.string   "codigo"
     t.string   "nombre"
-    t.date     "fechadebaja"
   end
 
-  create_table "tiposdocumentos", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "simple_objects", force: :cascade do |t|
+    t.string   "type"
     t.string   "codigo"
     t.string   "nombre"
-    t.date     "fechadebaja"
-  end
-
-  create_table "tipospremios", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "codigo"
-    t.string   "nombre"
-    t.date     "fechadebaja"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -63,7 +52,6 @@ ActiveRecord::Schema.define(version: 20160229191309) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.integer  "tiposdocumento_id"
     t.string   "documento"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
