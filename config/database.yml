@@ -10,14 +10,14 @@ default: &default
   timeout: 5000
 
 development:
-   adapter: mysql2
+   adapter: postgresql
    encoding: utf8
    database: maspremiospormenos
    pool: 10
-   username: darioajdadi
+   username: dario
    password: DarioFTW91
    host: localhost
-   port: 3306
+   port: 5432
    reconnect: true
    secure_auth: false
 
