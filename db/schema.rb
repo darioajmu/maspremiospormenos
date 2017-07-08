@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708142226) do
+ActiveRecord::Schema.define(version: 20170708144916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,14 @@ ActiveRecord::Schema.define(version: 20170708142226) do
   end
 
   create_table "premios", force: :cascade do |t|
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "codigo"
     t.string   "nombre"
     t.integer  "tipo_premio_id"
+    t.datetime "fecha_hora_sorteo"
+    t.integer  "numero_participaciones"
+    t.boolean  "entregado",              default: false
   end
 
   create_table "simple_objects", force: :cascade do |t|
