@@ -37,9 +37,10 @@ group :development, :test do
 end
 
 group :test do
-
   gem 'faker'
   gem 'test_after_commit'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 gem 'pg'
