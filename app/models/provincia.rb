@@ -1,13 +1,14 @@
-class Provincia < ActiveRecord::Base
+class Provincia < SimpleObject
 end
 
 # == Schema Information
 #
-# Table name: provincias
+# Table name: simple_objects
 #
 #  id         :integer          not null, primary key
-#  created_at :datetime
-#  updated_at :datetime
+#  type       :string
 #  codigo     :string
 #  nombre     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
