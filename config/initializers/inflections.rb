@@ -10,6 +10,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.uncountable %w( fish sheep )
 
   inflect.irregular 'provincia', 'provincias'
+  inflect.irregular 'participacion', 'participaciones'
 end
 
 # These inflection rules are supported but not enabled by default:
