@@ -1,10 +1,12 @@
 class Premio < ActiveRecord::Base
+  belongs_to :tipo_premio
+
   validates :nombre, presence: true, uniqueness: true
   validates :codigo, presence: true, uniqueness: true
   validates :tipo_premio_id, presence: true
-
-  belongs_to :tipo_premio
-end
+  validates :fecha_hora_sorteo, presence: true
+  validates :numero_participaciones, presence: true, numericality: { greater_than: 0 }
+  end
 
 # == Schema Information
 #
