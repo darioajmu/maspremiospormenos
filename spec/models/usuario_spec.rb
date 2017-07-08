@@ -15,9 +15,15 @@ RSpec.describe Usuario, type: :model do
   it { is_expected.to validate_presence_of :fechadenacimiento }
   it { is_expected.to validate_presence_of :movil }
   it { is_expected.to validate_presence_of :sexo }
+  it { is_expected.to validate_presence_of :role_id }
   it { is_expected.to allow_value('user.example').for(:username) }
 
   it { is_expected.to belong_to :tipo_documento }
+
+  it 'validates default role_id equal to 0' do
+    subject = described_class.new()
+    expect(subject.role_id).to eq(0)
+  end
 end
 
 # == Schema Information

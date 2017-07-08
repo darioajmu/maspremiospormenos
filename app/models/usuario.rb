@@ -19,6 +19,7 @@ class Usuario < ActiveRecord::Base
   validates :fechadenacimiento, presence: true
   validates :movil, presence: true
   validates :sexo, presence: true
+  validates :role_id, presence: true
 
   belongs_to :tipo_documento
 
