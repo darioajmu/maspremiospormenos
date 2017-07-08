@@ -1,4 +1,4 @@
-class TiposdocumentosController < ApplicationController
+class TipoDocumentosController < ApplicationController
 before_action :objeto_find, only(:index)
 
   def create
