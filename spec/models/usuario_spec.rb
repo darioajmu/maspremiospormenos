@@ -20,6 +20,7 @@ RSpec.describe Usuario, type: :model do
 
   it { is_expected.to belong_to :tipo_documento }
   it { is_expected.to have_many :participaciones }
+  it { is_expected.to have_many(:sorteos).through(:participaciones) }
 
   it 'validates default role_id equal to 0' do
     subject = described_class.new()
