@@ -1,4 +1,7 @@
 class GanadoresSorteo < ActiveRecord::Base
+  belongs_to :sorteo
+
+  validates :sorteo_id, presence: true
 end
 
 # == Schema Information
