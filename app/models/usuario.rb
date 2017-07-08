@@ -73,6 +73,7 @@ end
 #  sexo                   :string
 #  movil                  :decimal(, )
 #  tipo_documento_id      :integer
+#  role_id                :integer          default(0)
 #
 # Indexes
 #
