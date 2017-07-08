@@ -1,5 +1,6 @@
 class Premio < ActiveRecord::Base
   belongs_to :tipo_premio
+  has_many :sorteos
 
   validates :nombre, presence: true, uniqueness: true
   validates :codigo, presence: true, uniqueness: true

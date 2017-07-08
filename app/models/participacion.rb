@@ -1,5 +1,6 @@
 class Participacion < ActiveRecord::Base
   belongs_to :usuario
+  has_many :sorteos
 
   validates :usuario_id, presence: true
 end
