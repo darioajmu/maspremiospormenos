@@ -52,3 +52,5 @@ gem 'devise', '~> 3.4.1'
 gem "foundation-rails", "= 5.5.2.1"
 
 gem 'jquery-ui-rails'
+
+gem 'cancancan', '~> 1.10'

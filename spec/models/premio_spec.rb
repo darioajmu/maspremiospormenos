@@ -9,3 +9,15 @@ RSpec.describe Premio, type: :model do
   # it { is_expected.to belong_to :tipo_premio }
   it { is_expected.to belong_to :tipo_premio }
 end
+
+# == Schema Information
+#
+# Table name: premios
+#
+#  id             :integer          not null, primary key
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  codigo         :string
+#  nombre         :string
+#  tipo_premio_id :integer
+#

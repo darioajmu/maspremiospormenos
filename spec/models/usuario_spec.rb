@@ -15,9 +15,37 @@ RSpec.describe Usuario, type: :model do
   it { is_expected.to validate_presence_of :fechadenacimiento }
   it { is_expected.to validate_presence_of :movil }
   it { is_expected.to validate_presence_of :sexo }
+  it { is_expected.to validate_presence_of :role_id }
   it { is_expected.to allow_value('user.example').for(:username) }
 
   it { is_expected.to belong_to :tipo_documento }
+
+  it 'validates default role_id equal to 0' do
+    subject = described_class.new()
+    expect(subject.role_id).to eq(0)
+  end
+
+  it 'validates default role_id equal to user' do
+    subject = described_class.new()
+    expect(subject.role).to eq(:user)
+  end
+
+  context 'validates rol 0 is user' do
+    subject = described_class.new(role_id: 0)
+    it { expect(subject.user?).to be true }
+  end
+
+  context 'validates rol 1 is admin' do
+    subject = described_class.new(role_id: 1)
+    it { expect(subject.admin?).to be true }
+    it { expect(subject.role).to eq(:admin) }
+  end
+
+  context 'validates rol 2 is superadmin' do
+    subject = described_class.new(role_id: 2)
+    it { expect(subject.superadmin?).to be true }
+    it { expect(subject.role).to eq(:superadmin) }
+  end
 end
 
 # == Schema Information
@@ -54,6 +82,7 @@ end
 #  sexo                   :string
 #  movil                  :decimal(, )
 #  tipo_documento_id      :integer
+#  role_id                :integer          default(0)
 #
 # Indexes
 #
