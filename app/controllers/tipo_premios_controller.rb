@@ -1,4 +1,5 @@
 class TipoPremiosController < ApplicationController
+  load_and_authorize_resource
   def index
     @tipo_premios = TipoPremio.order(:nombre)
   end
@@ -8,7 +9,6 @@ class TipoPremiosController < ApplicationController
   end
 
   def create
-    @tipo_premio = TipoPremio.new(tipo_premio_params)
     respond_to do |format|
       if @tipo_premio.save
         format.html { redirect_to tipo_premios_path, notice: 'Business KPI was successfully created.' }

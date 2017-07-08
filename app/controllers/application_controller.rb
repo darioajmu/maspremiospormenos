@@ -1,9 +1,21 @@
 class ApplicationController < ActionController::Base
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to main_app.root_url, :alert => exception.message }
+    end
+  end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  #before_action :authenticate_usuario!
+  before_action :authenticate_usuario!
+  check_authorization unless: :devise_controller?
+
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  def current_user
+    return current_usuario
+  end
 
   protected
     def configure_permitted_parameters
