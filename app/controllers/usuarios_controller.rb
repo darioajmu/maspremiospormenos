@@ -1,25 +1,27 @@
 class UsuariosController < ApplicationController
-  before_action :objeto_find, only: [:edit, :show, :update, :destroy]
+  load_and_authorize_resource
 
-def edit
-end
-
-def update
-  if @usuario.update(objeto_parametros)
-    redirect_to 'index'
-  else
-    render 'edit'
+  def index
   end
-end
 
-private
-def objeto_find
-	@usuario = Usuario.find(params[:id])
-end
+  def edit
+  end
 
-def objeto_parametros
-	params.require(:usuario).permit(:username, :email, :encrypted_password, :password, :apellido1,
-	 :apellido2, :ciudad, :codigopostal, :nombre, :direccion, :direccioncompleta, :codigo, :documento,
- 	 :fechadenacimiento, :movil, :provincia_id, :sexo, :tipo_documento_id, :password_confirmation)
-end
+  def show
+  end
+
+  def update
+    if @usuario.update(usuario_params)
+      redirect_to 'index'
+    else
+      render 'edit'
+    end
+  end
+
+  private
+  def usuario_params
+    params.require(:usuario).permit(:username, :email, :encrypted_password, :password, :apellido1,
+      :apellido2, :ciudad, :codigopostal, :nombre, :direccion, :direccioncompleta, :codigo, :documento,
+      :fechadenacimiento, :movil, :provincia_id, :sexo, :tipo_documento_id, :password_confirmation)
+  end
 end
