@@ -1,4 +1,5 @@
 class TipoPremio < SimpleObject
+  has_many :premios
 end
 
 # == Schema Information
