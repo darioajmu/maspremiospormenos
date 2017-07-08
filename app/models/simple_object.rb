@@ -1,6 +1,6 @@
 class SimpleObject < ActiveRecord::Base
-  validates :nombre, presence: true, uniqueness: true
-  validates :codigo, presence: true, uniqueness: true
+  validates :nombre, presence: true, uniqueness: { scope: :type }
+  validates :codigo, presence: true, uniqueness: { scope: :type }
 end
 
 # == Schema Information

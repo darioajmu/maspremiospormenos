@@ -1,17 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe TipoPremio, type: :model do
+RSpec.describe Provincia, type: :model do
   it { is_expected.to validate_presence_of :codigo }
   it { is_expected.to validate_uniqueness_of(:codigo).scoped_to(:type) }
   it { is_expected.to validate_presence_of :nombre }
   it { is_expected.to validate_uniqueness_of(:nombre).scoped_to(:type) }
-
-  it 'validates type field equal to TipoPremio' do
+  it 'validates type field equal to Provincia' do
     subject = described_class.new()
-    expect(subject.type).to eq("TipoPremio")
+    expect(subject.type).to eq("Provincia")
   end
-
-it { is_expected.to have_many :premios }
 end
 
 # == Schema Information

@@ -1,4 +1,9 @@
 class Premio < ActiveRecord::Base
+  validates :nombre, presence: true, uniqueness: true
+  validates :codigo, presence: true, uniqueness: true
+  validates :tipo_premio_id, presence: true
+
+  belongs_to :tipo_premio
 end
 
 # == Schema Information
