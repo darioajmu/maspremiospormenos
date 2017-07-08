@@ -2,6 +2,7 @@ class UsuariosController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @usuarios = Usuario.all.order('LOWER(username)')
   end
 
   def edit
