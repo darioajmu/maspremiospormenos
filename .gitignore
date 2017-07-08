@@ -18,3 +18,4 @@
 
 # Testing
 spec/examples.txt
+.rspec
