@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Sorteo, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to :premio }
+  it { is_expected.to belong_to :participacion }
+
+  it { is_expected.to validate_presence_of :premio_id }
+  it { is_expected.to validate_presence_of :participacion_id }
 end
 
 # == Schema Information
