@@ -11,7 +11,7 @@ class TipoPremiosController < ApplicationController
   def create
     respond_to do |format|
       if @tipo_premio.save
-        format.html { redirect_to tipo_premios_path, notice: 'Business KPI was successfully created.' }
+        format.html { redirect_to tipo_premios_path, notice: 'El Tipo de premio fue creado correctamente.' }
         format.json { render :show, status: :created, location: @tipo_premio }
       else
         format.html { render :new }

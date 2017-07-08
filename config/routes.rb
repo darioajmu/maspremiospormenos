@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :inicios#, path: "inicio"
   resources :premios
   resources :tipo_premios
+  resources :tipo_documentos
   resources :usuarios
 end
