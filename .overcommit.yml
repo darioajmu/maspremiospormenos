@@ -15,6 +15,12 @@
 #
 # Uncomment the following lines to make the configuration take effect.
 
+PrePush:
+  RSpec:
+    enabled: true
+    command: ['bundle', 'exec', 'rspec', 'spec']
+    on_warn: fail
+
 #PreCommit:
 #  RuboCop:
 #    enabled: true
