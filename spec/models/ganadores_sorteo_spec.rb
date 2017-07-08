@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe GanadoresSorteo, type: :model do
   it { is_expected.to belong_to :sorteo }
+  it { is_expected.to delegate_method(:premio).to :sorteo }
+  it { is_expected.to delegate_method(:participacion).to :sorteo }
+  it { is_expected.to delegate_method(:usuario).to :participacion }
 
   it { is_expected.to validate_presence_of :sorteo_id }
 end

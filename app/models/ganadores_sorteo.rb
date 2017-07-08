@@ -1,5 +1,8 @@
 class GanadoresSorteo < ActiveRecord::Base
   belongs_to :sorteo
+  delegate :premio, to: :sorteo
+  delegate :participacion, to: :sorteo
+  delegate :usuario, to: :participacion
 
   validates :sorteo_id, presence: true
 end
