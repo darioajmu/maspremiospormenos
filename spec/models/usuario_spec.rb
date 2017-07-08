@@ -24,6 +24,28 @@ RSpec.describe Usuario, type: :model do
     subject = described_class.new()
     expect(subject.role_id).to eq(0)
   end
+
+  it 'validates default role_id equal to user' do
+    subject = described_class.new()
+    expect(subject.role).to eq(:user)
+  end
+
+  context 'validates rol 0 is user' do
+    subject = described_class.new(role_id: 0)
+    it { expect(subject.user?).to be true }
+  end
+
+  context 'validates rol 1 is admin' do
+    subject = described_class.new(role_id: 1)
+    it { expect(subject.admin?).to be true }
+    it { expect(subject.role).to eq(:admin) }
+  end
+
+  context 'validates rol 2 is superadmin' do
+    subject = described_class.new(role_id: 2)
+    it { expect(subject.superadmin?).to be true }
+    it { expect(subject.role).to eq(:superadmin) }
+  end
 end
 
 # == Schema Information

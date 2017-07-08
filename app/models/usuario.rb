@@ -1,9 +1,15 @@
 class Usuario < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :authentication_keys => [:login]
   attr_accessor :login
+
+  ROLES = {
+    user:       [0],
+    admin:      [1],
+    superadmin: [2]
+  }
+
+  belongs_to :tipo_documento
 
   validates :tipo_documento_id, presence: true
   validates :username, presence: true, :uniqueness => {:case_sensitive => false}
@@ -21,7 +27,17 @@ class Usuario < ActiveRecord::Base
   validates :sexo, presence: true
   validates :role_id, presence: true
 
-  belongs_to :tipo_documento
+  ROLES.each do |role_name, role_ids|
+    define_method "#{role_name}?" do
+      role_ids.include?(role_id)
+    end
+  end
+
+  def role
+    ROLES.each_with_object({}) do |(role_name, role_ids), hash|
+      hash.merge!(role_ids.first => role_name)
+    end[role_id]
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
