@@ -10,6 +10,7 @@ class Usuario < ActiveRecord::Base
   }
 
   belongs_to :tipo_documento
+  has_many :participaciones
 
   validates :tipo_documento_id, presence: true
   validates :username, presence: true, :uniqueness => {:case_sensitive => false}
