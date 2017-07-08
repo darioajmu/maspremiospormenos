@@ -15,8 +15,9 @@ RSpec.describe Usuario, type: :model do
   it { is_expected.to validate_presence_of :fechadenacimiento }
   it { is_expected.to validate_presence_of :movil }
   it { is_expected.to validate_presence_of :sexo }
-  it { is_expected.to validate_presence_of :sexo }
   it { is_expected.to allow_value('user.example').for(:username) }
+
+  it { is_expected.to belong_to :tipo_documento }
 end
 
 # == Schema Information

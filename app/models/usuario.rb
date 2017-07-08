@@ -20,6 +20,8 @@ class Usuario < ActiveRecord::Base
   validates :movil, presence: true
   validates :sexo, presence: true
 
+  belongs_to :tipo_documento
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

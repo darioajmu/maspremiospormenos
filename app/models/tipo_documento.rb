@@ -1,4 +1,5 @@
 class TipoDocumento < SimpleObject
+  has_many :usuarios
 end
 
 # == Schema Information
