@@ -16,30 +16,41 @@
     <nav class="top-bar" data-topbar role="navigation"  data-options="is_hover: true">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="/">Desarrollo</a></h1>
+          <h1><a href="/">Home</a></h1>
         </li>
       </ul>
       <section class="top-bar-section" >
+        <ul class="left">
+          <li><a href="/premios">Premios</a></li>
+          <li><a href="/sorteos">Sorteos</a></li>
+        </ul>
         <ul class="right">
-          <li class="divider"></li>
-          <li>
-            <% if usuario_signed_in? %>
-          </li>
-          <li class="divider"></li>
-          <li class="has-dropdown not-click "><a href=""><%= current_usuario.username %></a>
+          <li class="has-dropdown not-click "><a href="">Admin Menu</a>
             <ul class="dropdown">
-              <li><label>Menú de usuario</label></li>
+              <li><label>Menú de administrador</label></li>
               <li class="divider"></li>
-              <li>
-                <%= link_to 'Ver mi perfil de usuario', usuario_path(current_usuario.id) %>
-              </li>
-              <li>
-                <%= link_to "Desconectar", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
-              </li>
+              <li><a href="/tipo_documentos">Tipos de Documento</a></li>
+              <li><a href="/tipo_premios">Tipos de Premio</a></li>
+              <li><a href="/provincias">Provincias</a></li>
             </ul>
           </li>
+          <li class="divider"></li>
+            <% if usuario_signed_in? %>
+              <li class="has-dropdown not-click "><a href="">
+                <%= current_usuario.username %></a>
+                <ul class="dropdown">
+                  <li><label>Menú de usuario</label></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to 'Ver mi perfil de usuario', usuario_path(current_usuario.id) %>
+                  </li>
+                  <li>
+                    <%= link_to "Desconectar", destroy_usuario_session_path, method: :delete, :class => 'navbar-link'  %>
+                  </li>
+                </ul>
+              </li>
             <% else %>
-            <li><%= link_to "Conectar", new_usuario_session_path, :remote => true, "data-reveal-id" => "sign-in" %></li>
+              <li><%= link_to "Conectar", new_usuario_session_path, :remote => true, "data-reveal-id" => "sign-in" %></li>
             <% end %>
           </ul>
         </section>
