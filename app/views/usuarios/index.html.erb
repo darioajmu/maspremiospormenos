@@ -1,0 +1,16 @@
+<h3> Usuarios </h3>
+
+<table>
+  <thead>
+    <td> Id </td>
+    <td> Username </td>
+    <td> Ver Perfil </td>
+  </thead>
+  <% @usuarios.each do |usuario| %>
+    <tr>
+      <td> <%= usuario.id %>
+      <td> <%= usuario.username %>
+      <td> <%= link_to 'Ver', usuario_path(usuario.id) %>
+    </tr>
+  <% end %>
+</table>

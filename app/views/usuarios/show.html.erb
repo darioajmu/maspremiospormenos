@@ -1,0 +1,14 @@
+<h3> <%= "#{@usuario.nombre} #{@usuario.apellido1} #{@usuario.apellido2}" %> </h3>
+
+<%= link_to 'Atrás', :back , class: 'button radius small' %>
+
+<table>
+  <tr><td><strong>ID:</strong></td><td><%= @usuario.id %></td></tr>
+  <tr><td><strong>Nº Participaciones:</strong></td><td><%= @usuario.participaciones.size %></td></tr>
+  <tr><td><strong>Solicitar Participaciones:</strong></td><td><%= link_to 'Ir', solicitar_participaciones_path(usuario_id: @usuario.id) %></td></tr>
+
+  <tr><td><strong>Sorteos Activos:</strong></td><td><a href="">Ir</a></td></tr>
+  <tr><td><strong>Editar mi información:</strong></td><td><%= link_to 'Ir', edit_usuario_path(@usuario.id) %></td></tr>
+</table>
+
+<%= link_to 'Atrás', :back , class: 'button radius small' %>

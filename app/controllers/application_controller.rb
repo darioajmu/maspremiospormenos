@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
-    respond_to do |format|
-      format.json { head :forbidden }
-      format.html { redirect_to main_app.root_url, :alert => exception.message }
-    end
+    not_authorized(exception.message)
   end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -15,6 +12,13 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return current_usuario
+  end
+
+  def not_authorized(message)
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to main_app.root_url, :alert => message }
+    end
   end
 
   protected

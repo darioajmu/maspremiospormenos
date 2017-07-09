@@ -7,6 +7,8 @@ class Ability
       usuario ||= Usuario.new # guest user (not logged in)
       if usuario.user?
         can :read, Premio
+        can [:edit, :show], Usuario, id: usuario.id
+        can [:solicitar], Participacion
       elsif usuario.admin?
         can :manage, :all
       elsif usuario.superadmin?
