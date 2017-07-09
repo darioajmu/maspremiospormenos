@@ -8,6 +8,7 @@ class Ability
       if usuario.user?
         can :read, Premio
         can [:edit, :show], Usuario, id: usuario.id
+        can [:solicitar], Participacion
       elsif usuario.admin?
         can :manage, :all
       elsif usuario.superadmin?

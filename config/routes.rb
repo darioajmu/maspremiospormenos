@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   resources :tipo_premios
   resources :tipo_documentos
   resources :usuarios
+  resources :participaciones do
+    collection do
+      get :solicitar
+    end
+  end
 end
