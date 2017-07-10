@@ -17,6 +17,8 @@ class SorteosController < ApplicationController
 
       use_participacion(participacion)
 
+      premio.premio_completo if participaciones_restantes == 1
+
       flash[:notice] = "Participacion anotada al premio."
     elsif participaciones_restantes <= 0
       flash[:alert] = "Este premio no admite más participaciones."

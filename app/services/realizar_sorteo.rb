@@ -27,6 +27,6 @@ class RealizarSorteo
   end
 
   def entregar_premio(winner)
-    winner.premio.entregar_premio
+    winner.premio.premio_sorteado
   end
 end

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Premio, type: :model do
+  it { is_expected.to have_constant :ESTADOS }
+
   it { is_expected.to belong_to :tipo_premio }
   it { is_expected.to have_many :sorteos }
 
@@ -11,6 +13,7 @@ RSpec.describe Premio, type: :model do
   it { is_expected.to validate_presence_of :tipo_premio_id }
   it { is_expected.to validate_presence_of :fecha_hora_sorteo }
   it { is_expected.to validate_presence_of :numero_participaciones }
+  it { is_expected.to validate_presence_of :estado }
 
   context 'numero_participaciones' do
       subject = described_class.new
@@ -39,6 +42,27 @@ RSpec.describe Premio, type: :model do
         expect(subject.errors[:numero_participaciones]).to be_blank
       end
     end
+
+    context 'change estado' do
+
+      it 'is expect to be no disponible after be created' do
+        subject = described_class.create()
+
+        expect(subject.no_disponible?).to be true
+        expect(subject.estado).to be 0
+      end
+
+      Premio::ESTADOS.each do |estado_nombre, estado|
+        subject = described_class.create()
+        it "is expect to be #{estado_nombre} if his estado is changed to #{estado}" do
+
+          subject.send("premio_#{estado_nombre}")
+
+          expect(subject.send("#{estado_nombre}?")).to be true
+
+        end
+      end
+    end
   end
 
 # == Schema Information
@@ -53,5 +77,5 @@ RSpec.describe Premio, type: :model do
 #  tipo_premio_id         :integer
 #  fecha_hora_sorteo      :datetime
 #  numero_participaciones :integer
-#  entregado              :boolean          default(FALSE)
+#  estado                 :integer          default(0)
 #
