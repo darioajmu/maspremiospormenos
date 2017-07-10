@@ -25,7 +25,7 @@
         <td> <%= premio.fecha_hora_sorteo.strftime('%d-%m-%Y %H:%M-%S') %> </td>
         <td> <%= premio.numero_participaciones %> </td>
         <td> <%= set_missing_participations(premio) %> </td>
-        <td> <%= link_to 'Añadir', assign_participation_sorteos_path(premio_id: premio.id, usuario_id: current_usuario.id) %> </td>
+        <td> <%= eval(link_to_assign(premio)) %> </td>
         <td> <%= link_to 'Editar', edit_premio_path(premio.id) %> </td>
       </tr>
     <% end %>
