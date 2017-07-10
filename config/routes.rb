@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   devise_for :usuarios
   root 'inicios#index'
   resources :inicios#, path: "inicio"
-  resources :premios
+  resources :premios do
+    collection do
+      get :no_disponibles
+    end
+    member do
+      get :publicar
+    end
+  end
   resources :tipo_premios
   resources :tipo_documentos
   resources :usuarios

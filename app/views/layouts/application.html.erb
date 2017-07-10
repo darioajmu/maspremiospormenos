@@ -21,6 +21,9 @@
       </ul>
       <section class="top-bar-section" >
         <ul class="left">
+          <% if can?(:no_disponibles, Premio) %>
+            <li><a href="/premios/no_disponibles">Premios Pre-Publicados</a></li>
+          <% end %>
           <li><a href="/premios">Premios</a></li>
           <li><a href="/ganadores_sorteos">Sorteos Finalizados</a></li>
         </ul>

@@ -1,4 +1,6 @@
-<h1>Premios</h1>
+<h1>Premios Pre-Publicados</h1>
+
+<%= link_to "Nuevo Premio", {:action => 'new', :controller => 'premios'}, class: "small success button radius" if can?(:create, Premio)%>
 
 <table>
   <thead>
@@ -8,11 +10,12 @@
       <td> Nombre </td>
       <td> Tipo de premio </td>
       <td> Fecha y Hora del Sorteo </td>
-      <td> Número de participaciones del Sorteo </td>
-      <td> Número de participaciones faltantes </td>
-      <td> Añadir participacion </td>
-      <% if can? :realizar_sorteo, Premio %>
-        <td>Forzar Sorteo</td>
+      <td> Numero de Participaciones </td>
+      <% if can? :publicar, Premio %>
+        <td> Publicar </td>
+      <% end %>
+      <% if can? :edit, Premio %>
+        <td> </td>
       <% end %>
     </tr>
   </thead>
@@ -24,10 +27,11 @@
       <td> <%= premio.tipo_premio.nombre %> </td>
       <td> <%= premio.fecha_hora_sorteo.strftime('%d-%m-%Y %H:%M:%S') %> </td>
       <td> <%= premio.numero_participaciones %> </td>
-      <td> <%= set_missing_participations(premio) %> </td>
-      <td> <%= eval(link_to_assign(premio)) %> </td>
-      <% if can? :realizar_sorteo, Premio %>
-        <td> <%= eval(link_to_raffle(premio)) %> </td>
+      <% if can? :publicar, Premio %>
+      <td> <%= link_to 'Publicar', publicar_premio_path(premio.id) %> </td>
+      <% end %>
+      <% if can? :edit, Premio %>
+        <td> <%= link_to 'Editar', edit_premio_path(premio.id) %> </td>
       <% end %>
     </tr>
   <% end %>
