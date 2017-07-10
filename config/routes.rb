@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   resources :tipo_premios
   resources :tipo_documentos
   resources :usuarios
+
+  resources :sorteos, only: [:assign_participation] do
+    collection do
+      get :assign_participation
+    end
+  end
+
   resources :participaciones do
     collection do
       get :solicitar
