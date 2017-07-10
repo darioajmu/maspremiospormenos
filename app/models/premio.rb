@@ -7,7 +7,11 @@ class Premio < ActiveRecord::Base
   validates :tipo_premio_id, presence: true
   validates :fecha_hora_sorteo, presence: true
   validates :numero_participaciones, presence: true, numericality: { greater_than: 0 }
+
+  def entregar_premio
+    update(entregado: true)
   end
+end
 
 # == Schema Information
 #
