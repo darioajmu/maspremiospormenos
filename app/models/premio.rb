@@ -3,8 +3,9 @@ class Premio < ActiveRecord::Base
   ESTADOS = {
     no_disponible:   [0],
     disponible:      [1],
-    sorteando:       [2],
-    sorteado:        [3]
+    completo:        [2],
+    sorteando:       [3],
+    sorteado:        [4]
   }
 
   belongs_to :tipo_premio
@@ -16,20 +17,24 @@ class Premio < ActiveRecord::Base
   validates :fecha_hora_sorteo, presence: true
   validates :numero_participaciones, presence: true, numericality: { greater_than: 0 }
 
-  ESTADOS.each do |estado_nombre, estado_ids|
+  ESTADOS.each do |estado_nombre, estados|
     define_method "#{estado_nombre}?" do
-      role_ids.include?(estado_ids)
+      estados.include?(estado)
     end
   end
 
-  def estado
-    ESTADOS.each_with_object({}) do |(estado_nombre, estado_ids), hash|
-      hash.merge!(estado_ids.first => estado_nombre)
-    end[estado_id]
+  def estado_premio
+    ESTADOS.each_with_object({}) do |(estado_nombre, estado), hash|
+      hash.merge!(estado.first => estado_nombre)
+    end[estado]
   end
 
   def premio_sorteado
     update(estado: SORTEADO)
+  end
+
+  def full_participated
+    update(estado: COMPLETO)
   end
 end
 

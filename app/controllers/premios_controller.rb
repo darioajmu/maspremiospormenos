@@ -25,10 +25,6 @@ class PremiosController < ApplicationController
     end
   end
 
-  def apuntar_participacion
-
-  end
-
   private
 
   def premio_params
