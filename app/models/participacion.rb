@@ -3,6 +3,10 @@ class Participacion < ActiveRecord::Base
   has_many :sorteos
 
   validates :usuario_id, presence: true
+
+  def make_participation_used
+    update(usada: true)
+  end
 end
 
 # == Schema Information

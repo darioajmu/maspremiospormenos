@@ -34,6 +34,6 @@ class SorteosController < ApplicationController
   end
 
   def use_participacion(participacion)
-    participacion.update(usada: true)
+    participacion.make_participation_used
   end
 end
