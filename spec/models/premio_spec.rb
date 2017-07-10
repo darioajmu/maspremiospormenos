@@ -13,6 +13,7 @@ RSpec.describe Premio, type: :model do
   it { is_expected.to validate_presence_of :tipo_premio_id }
   it { is_expected.to validate_presence_of :fecha_hora_sorteo }
   it { is_expected.to validate_presence_of :numero_participaciones }
+  it { is_expected.to validate_presence_of :estado }
 
   context 'numero_participaciones' do
       subject = described_class.new
@@ -55,7 +56,7 @@ RSpec.describe Premio, type: :model do
         subject = described_class.create()
         it "is expect to be #{estado_nombre} if his estado is changed to #{estado}" do
 
-          subject.update(estado: estado.first)
+          subject.send("premio_#{estado_nombre}")
 
           expect(subject.send("#{estado_nombre}?")).to be true
 

@@ -15,11 +15,16 @@ class Premio < ActiveRecord::Base
   validates :codigo, presence: true, uniqueness: true
   validates :tipo_premio_id, presence: true
   validates :fecha_hora_sorteo, presence: true
+  validates :estado, presence: true
   validates :numero_participaciones, presence: true, numericality: { greater_than: 0 }
 
   ESTADOS.each do |estado_nombre, estados|
     define_method "#{estado_nombre}?" do
       estados.include?(estado)
+    end
+
+    define_method "premio_#{estado_nombre}" do
+      update(estado: estados.first)
     end
   end
 
@@ -27,14 +32,6 @@ class Premio < ActiveRecord::Base
     ESTADOS.each_with_object({}) do |(estado_nombre, estado), hash|
       hash.merge!(estado.first => estado_nombre)
     end[estado]
-  end
-
-  def premio_sorteado
-    update(estado: SORTEADO)
-  end
-
-  def full_participated
-    update(estado: COMPLETO)
   end
 end
 
