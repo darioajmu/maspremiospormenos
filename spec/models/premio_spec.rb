@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Premio, type: :model do
+  it { is_expected.to have_constant :ESTADOS }
+
   it { is_expected.to belong_to :tipo_premio }
   it { is_expected.to have_many :sorteos }
 
@@ -53,5 +55,5 @@ RSpec.describe Premio, type: :model do
 #  tipo_premio_id         :integer
 #  fecha_hora_sorteo      :datetime
 #  numero_participaciones :integer
-#  entregado              :boolean          default(FALSE)
+#  estado                 :integer          default(0)
 #
