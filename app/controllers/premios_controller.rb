@@ -5,10 +5,14 @@ class PremiosController < ApplicationController
     @premios = Premio.where(estado: Premio::DISPONIBLE)
   end
 
+  def no_disponibles
+    @premios = Premio.where(estado: Premio::NO_DISPONIBLE)
+  end
+
   def create
     respond_to do |format|
       if @premio.save
-        format.html { redirect_to premios_path, notice: 'El Premio fue creado correctamente.' }
+        format.html { redirect_to no_disponibles_premios_path, notice: 'El Premio fue creado correctamente.' }
         format.json { render :show, status: :created, location: @premio }
       else
         format.html { render :new }
@@ -20,13 +24,22 @@ class PremiosController < ApplicationController
   def update
     respond_to do |format|
       if @premio.update(premio_params)
-        format.html { redirect_to premios_path, notice: 'El Premio fue editado correctamente.' }
+        format.html { redirect_to no_disponibles_premios_path, notice: 'El Premio fue editado correctamente.' }
         format.json { render :show, status: :created, location: @premio }
       else
         format.html { render :new }
         format.json { render json: @premio.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def publicar
+    @premio = Premio.find(params["id"])
+
+    @premio.premio_disponible
+
+    flash[:notice] = "Premio correctamente publicado."
+    redirect_to premios_path
   end
 
   private
