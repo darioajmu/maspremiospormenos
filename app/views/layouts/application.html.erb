@@ -24,19 +24,25 @@
           <% if can?(:no_disponibles, Premio) %>
             <li><a href="/premios/no_disponibles">Premios Pre-Publicados</a></li>
           <% end %>
-          <li><a href="/premios">Premios</a></li>
+          <li><a href="/premios">Premios Disponibles</a></li>
+            <% if can?(:completos, Premio) %>
+              <li><a href="/premios/completos">Premios Completos</a></li>
+            <% end %>
           <li><a href="/ganadores_sorteos">Sorteos Finalizados</a></li>
         </ul>
         <ul class="right">
-          <li class="has-dropdown not-click "><a href="">Admin Menu</a>
-            <ul class="dropdown">
-              <li><label>Menú de administrador</label></li>
-              <li class="divider"></li>
-              <li><a href="/tipo_documentos">Tipos de Documento</a></li>
-              <li><a href="/tipo_premios">Tipos de Premio</a></li>
-              <li><a href="/provincias">Provincias</a></li>
-            </ul>
-          </li>
+          <% if current_usuario.admin? %>
+            <li class="has-dropdown not-click "><a href="">Admin Menu</a>
+              <ul class="dropdown">
+                <li><label>Menú de administrador</label></li>
+                <li class="divider"></li>
+                <li><a href="/tipo_documentos">Tipos de Documento</a></li>
+                <li><a href="/tipo_premios">Tipos de Premio</a></li>
+                <li><a href="/provincias">Provincias</a></li>
+                <li><a href="/usuarios">Usuarios</a></li>
+              </ul>
+            </li>
+          <% end %>
           <li class="divider"></li>
             <% if usuario_signed_in? %>
               <li class="has-dropdown not-click "><a href="">
