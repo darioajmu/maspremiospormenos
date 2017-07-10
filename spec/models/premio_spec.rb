@@ -41,6 +41,27 @@ RSpec.describe Premio, type: :model do
         expect(subject.errors[:numero_participaciones]).to be_blank
       end
     end
+
+    context 'change estado' do
+
+      it 'is expect to be no disponible after be created' do
+        subject = described_class.create()
+
+        expect(subject.no_disponible?).to be true
+        expect(subject.estado).to be 0
+      end
+
+      Premio::ESTADOS.each do |estado_nombre, estado|
+        subject = described_class.create()
+        it "is expect to be #{estado_nombre} if his estado is changed to #{estado}" do
+
+          subject.update(estado: estado.first)
+
+          expect(subject.send("#{estado_nombre}?")).to be true
+
+        end
+      end
+    end
   end
 
 # == Schema Information
