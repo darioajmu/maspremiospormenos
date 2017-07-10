@@ -6,4 +6,8 @@ module PremiosHelper
   def link_to_assign(premio)
     set_missing_participations(premio) > 0 ? "link_to 'Añadir', assign_participation_sorteos_path(premio_id: premio.id, usuario_id: current_usuario.id)" : ""
   end
+
+  def link_to_raffle(premio)
+    set_missing_participations(premio) == 0 ? "link_to 'Sortear', sortear_sorteos_path(premio_id: premio.id), data: {confirm: '¿Estás seguro?'}" : ""
+  end
 end

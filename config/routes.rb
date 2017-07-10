@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   resources :tipo_premios
   resources :tipo_documentos
   resources :usuarios
+  resources :ganadores_sorteos
 
   resources :sorteos, only: [:assign_participation] do
     collection do
       get :assign_participation
+      get :sortear
     end
   end
 

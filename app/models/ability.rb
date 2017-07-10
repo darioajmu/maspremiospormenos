@@ -6,9 +6,10 @@ class Ability
     #
       usuario ||= Usuario.new # guest user (not logged in)
       if usuario.user?
+        can [:read], GanadoresSorteo
+        can [:solicitar], Participacion
         can :read, Premio
         can [:edit, :show], Usuario, id: usuario.id
-        can [:solicitar], Participacion
       elsif usuario.admin?
         can :manage, :all
       end

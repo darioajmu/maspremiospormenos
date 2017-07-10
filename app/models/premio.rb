@@ -26,6 +26,8 @@ class Premio < ActiveRecord::Base
     define_method "premio_#{estado_nombre}" do
       update(estado: estados.first)
     end
+
+    self.const_set(estado_nombre.upcase, estados.first)
   end
 
   def estado_premio
