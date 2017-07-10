@@ -11,8 +11,6 @@ class Ability
         can [:solicitar], Participacion
       elsif usuario.admin?
         can :manage, :all
-      elsif usuario.superadmin?
-        can :manage, :all
       end
     #
     # The first argument to `can` is the action you are giving the user

@@ -42,12 +42,6 @@ RSpec.describe Usuario, type: :model do
     it { expect(subject.admin?).to be true }
     it { expect(subject.role).to eq(:admin) }
   end
-
-  context 'validates rol 2 is superadmin' do
-    subject = described_class.new(role_id: 2)
-    it { expect(subject.superadmin?).to be true }
-    it { expect(subject.role).to eq(:superadmin) }
-  end
 end
 
 # == Schema Information

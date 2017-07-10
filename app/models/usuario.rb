@@ -5,8 +5,7 @@ class Usuario < ActiveRecord::Base
 
   ROLES = {
     user:       [0],
-    admin:      [1],
-    superadmin: [2]
+    admin:      [1]
   }
 
   belongs_to :tipo_documento
