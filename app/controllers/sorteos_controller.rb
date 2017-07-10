@@ -29,6 +29,22 @@ class SorteosController < ApplicationController
     redirect_to :back
   end
 
+  def sortear
+    premio = Premio.find(params["premio_id"])
+    participaciones_restantes = set_missing_participations(premio)
+
+    if participaciones_restantes == 0 && premio.disponible?
+      RealizarSorteo.new.realizar_sorteo(params["premio_id"])
+      flash[:notice] = "Sorteo Realizado. Búscalo en la pestaña 'Sorteos Finalizados'"
+    elsif participaciones_restantes > 0
+      flash[:notice] = "No se puede realizar el Sorteo por qué aún quedan participaciones"
+    elsif !premio.disponible?
+      flash[:notice] = "No se puede realizar el Sorteo por qué el premio no está disponible"
+    end
+
+    redirect_to :back
+  end
+
   private
 
   def create_sorteo(premio_id, participacion_id)

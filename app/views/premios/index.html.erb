@@ -13,7 +13,12 @@
         <td> Número de participaciones del Sorteo </td>
         <td> Número de participaciones faltantes </td>
         <td> Añadir participacion </td>
-        <td> </td>
+        <% if can? :edit, Premio %>
+          <td> </td>
+        <% end %>
+        <% if can? :realizar_sorteo, Premio %>
+          <td>Forzar Sorteo</td>
+        <% end %>
       </tr>
     </thead>
     <% @premios.each do |premio| %>
@@ -22,10 +27,15 @@
         <td> <%= premio.codigo%> </td>
         <td> <%= premio.nombre %> </td>
         <td> <%= premio.tipo_premio.nombre %> </td>
-        <td> <%= premio.fecha_hora_sorteo.strftime('%d-%m-%Y %H:%M-%S') %> </td>
+        <td> <%= premio.fecha_hora_sorteo.strftime('%d-%m-%Y %H:%M:%S') %> </td>
         <td> <%= premio.numero_participaciones %> </td>
         <td> <%= set_missing_participations(premio) %> </td>
         <td> <%= eval(link_to_assign(premio)) %> </td>
-        <td> <%= link_to 'Editar', edit_premio_path(premio.id) %> </td>
+        <% if can? :edit, Premio %>
+          <td> <%= link_to 'Editar', edit_premio_path(premio.id) %> </td>
+        <% end %>
+        <% if can? :realizar_sorteo, Premio %>
+          <td> <%= eval(link_to_raffle(premio)) %> </td>
+        <% end %>
       </tr>
     <% end %>

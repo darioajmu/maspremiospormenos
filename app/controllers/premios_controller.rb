@@ -1,6 +1,10 @@
 class PremiosController < ApplicationController
   load_and_authorize_resource
 
+  def index
+    @premios = Premio.where(estado: Premio::DISPONIBLE)
+  end
+
   def create
     respond_to do |format|
       if @premio.save

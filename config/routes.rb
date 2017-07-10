@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :sorteos, only: [:assign_participation] do
     collection do
       get :assign_participation
+      get :sortear
     end
   end
 

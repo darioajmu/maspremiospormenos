@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Premio, type: :model do
   it { is_expected.to have_constant :ESTADOS }
+  it { is_expected.to have_constant :NO_DISPONIBLE }
+  it { is_expected.to have_constant :DISPONIBLE }
+  it { is_expected.to have_constant :SORTEANDO }
+  it { is_expected.to have_constant :SORTEADO }
 
   it { is_expected.to belong_to :tipo_premio }
   it { is_expected.to have_many :sorteos }
