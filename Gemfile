@@ -47,7 +47,10 @@ gem 'pg'
 
 gem 'devise', '~> 3.4.1'
 
-#gem 'devise_security_extension', '~>  0.9.2'
+gem 'shoryuken', '2.0.11'
+
+gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-rails'
 
 gem "foundation-rails", "= 5.5.2.1"
 
