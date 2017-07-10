@@ -9,6 +9,10 @@ class PremiosController < ApplicationController
     @premios = Premio.where(estado: Premio::NO_DISPONIBLE)
   end
 
+  def completos
+    @premios = Premio.where(estado: Premio::COMPLETO)
+  end
+
   def create
     respond_to do |format|
       if @premio.save

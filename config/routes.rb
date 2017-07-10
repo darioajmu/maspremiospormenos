@@ -2,14 +2,6 @@ Rails.application.routes.draw do
   devise_for :usuarios
   root 'inicios#index'
   resources :inicios#, path: "inicio"
-  resources :premios do
-    collection do
-      get :no_disponibles
-    end
-    member do
-      get :publicar
-    end
-  end
   resources :tipo_premios
   resources :tipo_documentos
   resources :usuarios
@@ -19,6 +11,16 @@ Rails.application.routes.draw do
     collection do
       get :assign_participation
       get :sortear
+    end
+  end
+
+  resources :premios do
+    collection do
+      get :no_disponibles
+      get :completos
+    end
+    member do
+      get :publicar
     end
   end
 
