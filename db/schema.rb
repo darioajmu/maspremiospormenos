@@ -11,54 +11,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109162521) do
+ActiveRecord::Schema.define(version: 20170710114816) do
 
-  create_table "provincias", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "codigo",      limit: 255
-    t.string   "nombre",      limit: 255
-    t.date     "fechadebaja"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "ganadores_sorteos", force: :cascade do |t|
+    t.integer  "sorteo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "tiposdocumentos", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "codigo",      limit: 255
-    t.string   "nombre",      limit: 255
-    t.date     "fechadebaja"
+  create_table "participaciones", force: :cascade do |t|
+    t.integer  "usuario_id"
+    t.boolean  "usada",      default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "premios", force: :cascade do |t|
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "codigo"
+    t.string   "nombre"
+    t.integer  "tipo_premio_id"
+    t.datetime "fecha_hora_sorteo"
+    t.integer  "numero_participaciones"
+    t.integer  "estado",                 default: 0
+  end
+
+  create_table "simple_objects", force: :cascade do |t|
+    t.string   "type"
+    t.string   "codigo"
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sorteos", force: :cascade do |t|
+    t.integer  "premio_id"
+    t.integer  "participacion_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "usuarios", force: :cascade do |t|
-    t.string   "email",                  limit: 255,                default: "", null: false
-    t.string   "encrypted_password",     limit: 255,                default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,                  default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username",               limit: 255
-    t.integer  "tiposdocumento_id",      limit: 4
-    t.string   "documento",              limit: 255
-    t.string   "confirmation_token",     limit: 255
+    t.string   "username"
+    t.string   "documento"
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "nombre",                 limit: 255
-    t.string   "apellido1",              limit: 255
-    t.string   "apellido2",              limit: 255
-    t.integer  "provincia_id",           limit: 4
-    t.string   "ciudad",                 limit: 255
-    t.decimal  "codigopostal",                       precision: 10
-    t.string   "direccion",              limit: 255
-    t.string   "direccioncompleta",      limit: 255
+    t.string   "nombre"
+    t.string   "apellido1"
+    t.string   "apellido2"
+    t.integer  "provincia_id"
+    t.string   "ciudad"
+    t.decimal  "codigopostal"
+    t.string   "direccion"
+    t.string   "direccioncompleta"
     t.date     "fechadenacimiento"
-    t.string   "sexo",                   limit: 255
-    t.decimal  "movil",                              precision: 10
+    t.string   "sexo"
+    t.decimal  "movil"
+    t.integer  "tipo_documento_id"
+    t.integer  "role_id",                default: 0
   end
 
   add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true, using: :btree

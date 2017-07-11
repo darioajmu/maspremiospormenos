@@ -1,0 +1,19 @@
+<h1>Tipos de Premios</h1>
+
+<%= link_to "Nuevo Tipo de Premio", {:action => 'new', :controller => 'tipo_premios'}, class: "small success button radius" if can?(:create, TipoPremio)%>
+
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Codigo</td>
+        <td>Nombre</td>
+      </tr>
+    </thead>
+    <% @tipo_premios.each do |t|%>
+      <tr>
+        <td><%= t.id %></td>
+        <td><%= t.codigo%></td>
+        <td><%= t.nombre %></td>
+      </tr>
+    <%end%>

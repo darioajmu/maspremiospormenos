@@ -1,0 +1,37 @@
+<%= form_for @premio do |f| %>
+
+<% if @premio.errors.any? %>
+
+<div>
+    <error style="font-size:200%;"><%= pluralize(@premio.errors.count, "Error") %>, evita/n que el registro sea guardado:</error>
+    <ul>
+    <% @premio.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+    <% end %>
+    </ul>
+</div>
+<% end %>
+
+  <div class="row fullWidth">
+    <div class="large-4 columns">
+      <%= f.label :codigo, "Codigo" %>
+      <%= f.text_field:codigo%>
+
+      <%= f.label :nombre, "Nombre" %>
+      <%= f.text_field:nombre %>
+
+      <%= f.label :tipo_premio, "Tipo de Premio" %>
+      <%= f.collection_select(:tipo_premio_id, TipoPremio.all.order("LOWER(nombre)"),  :id, :nombre, {prompt: "Selecciona un Tipo de Premio"}) %>
+
+      <%= f.label :fecha_hora_sorteo, "Fecha y hora del sorteo" %>
+      <%= f.date_field :fecha_hora_sorteo %>
+
+    <%= f.label :numero_participaciones, "Numero de Participaciones" %>
+    <%= f.number_field :numero_participaciones, step: 1, min: 1, value: 1 %>
+  </div>
+  <div class="row fullWidth">
+    <div class="large-12 columns">
+      <%= f.submit "Enviar", class: "tiny button radius" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<h3> Sorteos Finalizados y Ganadores</h3>
+
+<table>
+  <thead>
+    <tr>
+      <td> Nombre y apellidos del ganador</td>
+      <td> Premio </td>
+      <td> Fecha y Hora del Sorteo </td>
+    </tr>
+  </thead>
+  <% @ganadores_sorteos.each do |ganadores_sorteo| %>
+    <tr>
+      <td> <%= set_winner_name(ganadores_sorteo) %> </td>
+      <td> <%= set_prize_name(ganadores_sorteo) %> </td>
+        <td> <%= ganadores_sorteo.created_at.strftime('%d-%m-%Y %H:%M:%S') %> </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,39 +1,97 @@
-<h2>Editar <%= resource_name.to_s.humanize %></h2>
+<h1>Editar información de <%= resource_name.to_s.humanize %></h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= link_to 'Atrás', :back , class: 'button radius small' %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<%= form_for("usuario", url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= devise_error_messages! %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Actualmente estamos esperando que confirmes la cuenta <%= resource.unconfirmed_email %></div>
-  <% end %>
+<div class="large-4 columns">
+  <%= f.label "Email" %>
+  <%= f.email_field :email, autofocus: true %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Nombre de Usuario" %>
+  <%= f.text_field :username %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Fecha de Nacimiento" %>
+  <%= f.date_field :fechadenacimiento%>
+</div>
 
-  <div class="field">
-    <%= f.label "Contraseña" %> <i>(deja este campo en blanco si no la quieres modificar)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<div class="large-4 columns">
+  <%= f.label "Tipo de Documento" %>
+  <%= f.collection_select(:tipo_documento_id, TipoDocumento.all.order("LOWER(nombre)"),  :id, :nombre, {prompt: "Selecciona un Tipo de Documento"}) %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Documento" %>
+  <%= f.text_field :documento %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "sexo" %>
+  <%= f.text_field :sexo %>
+</div>
 
-  <div class="field">
-    <%= f.label "Confirma la contraseña" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+<div class="large-4 columns">
+  <%= f.label "Nombre" %>
+  <%= f.text_field :nombre%>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Primer Apellido" %>
+  <%= f.text_field :apellido1 %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Segundo Apellido" %>
+  <%= f.text_field :apellido2 %>
+</div>
 
-  <div class="field">
-    <%= f.label "Contraseña actual" %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+<div class="large-4 columns">
+  <%= f.label "Provincias" %>
+  <%= f.collection_select(:provincia_id, Provincia.all.order("LOWER(nombre)"),  :id, :nombre, {prompt: "Selecciona una Provincia"}) %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Ciudad" %>
+  <%= f.text_field :ciudad %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Codigo Postal" %>
+  <%= f.number_field :codigopostal %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+<div class="large-6 columns">
+  <%= f.label "Dirección" %>
+  <%= f.text_field :direccion %>
+</div>
+<div class="large-6 columns">
+  <%= f.label "Más datos de dirección" %>
+  <%= f.text_field :direccioncompleta %>
+</div>
+
+
+<div class="large-4 columns">
+  <%= f.label "Nueva Contraseña" %>
+  <%= f.text_field :current_password %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Repite la nueva contraseña" %>
+  <%= f.password_field :password_confirmation %>
+</div>
+<div class="large-4 columns">
+    <%= f.label "Contraseña actual" %>
+    <%= f.password_field :current_password %>
+</div>
+<div class="large-4 columns">
+  <%= f.label "Movil" %>
+  <%= f.number_field :movil%>
+</div>
+
+<div class="large-12 columns">
+  <%= f.submit "Enviar", class: 'button radius small' %>
+  <%= link_to "Atrás", :back, class: 'button radius small' %>
+</div>
 <% end %>
-
+<div class="large-12 columns">
 <h3>Cancelar mi cuenta</h3>
-
-<p>Si quieres eliminar tu cuenta (¿¡¿¡¿QUIÉN QUERRÍA ALGO ASÍ?!?!?) pincha en el siguiente enlace <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Atrás", :back %>
+<p>Si quieres eliminar tu cuenta pincha en el siguiente botón:
+  <p> <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás segur@?" }, method: :delete, class: 'button radius small' %>
+    <%= link_to "Atrás", :back, class: 'button radius small' %>
+</div>

@@ -1,0 +1,30 @@
+<h1>Premios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td> ID </td>
+      <td> Codigo </td>
+      <td> Nombre </td>
+      <td> Tipo de premio </td>
+      <td> Fecha y Hora del Sorteo </td>
+      <td> Número de participaciones del Sorteo </td>
+      <td> Número de participaciones faltantes </td>
+      <td> Mis participaciones </td>
+      <td> Añadir participacion </td>
+    </tr>
+  </thead>
+  <% @premios.each do |premio| %>
+    <tr>
+      <td> <%= premio.id %> </td>
+      <td> <%= premio.codigo%> </td>
+      <td> <%= premio.nombre %> </td>
+      <td> <%= premio.tipo_premio.nombre %> </td>
+      <td> <%= premio.fecha_hora_sorteo.strftime('%d-%m-%Y %H:%M:%S') %> </td>
+      <td> <%= premio.numero_participaciones %> </td>
+      <td> <%= set_missing_participations(premio) %> </td>
+      <td> <%= set_my_participations(premio) %> </td>
+      <td> <%= eval(link_to_assign(premio)) %> </td>
+    </tr>
+  <% end %>
+</table>
