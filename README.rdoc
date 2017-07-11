@@ -1,28 +1,26 @@
-== README
+== Más Premios por Menos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 2.3.4
 
-Things you may want to cover:
+* Rails version: 4.2.3
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Database: PostgreSQL
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Bienvenido a la aplicación "Más Premios por Menos".
+
+En esta aplicación hay dos tipos de Usuarios: user normal y admin.
+
+Los admin dan de alta los premios y los validan antes de que pasen a poder ser accesibles al resto de usuarios.
+
+Los user lo primero que tienen que hacer es solicitar participaciones. Lo hacen desde su perfil.
+
+Las participaciones son unos "tickets" que los usuarios compran para poder apuntarse a los sorteos.
+
+Cada premio tiene un número de participaciones que deben cubrirse para que se pueda realizar el sorteo.
+
+Desde la pestaña de premios el user puede apuntarse a los premios.
+
+Una vez el premio ha llegado a las participaciones necesarios se produce el sorteo. El premio deja de estar disponible.
+
+En la pestaña "Premios Completos" aparecerán los ganadores.
