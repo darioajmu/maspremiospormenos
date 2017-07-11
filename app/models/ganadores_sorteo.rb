@@ -5,6 +5,11 @@ class GanadoresSorteo < ActiveRecord::Base
   delegate :usuario, to: :participacion
 
   validates :sorteo_id, presence: true
+  validate :check_sorteo_prize
+
+  def check_sorteo_prize
+    errors.add(:premio_id, "ya ha tenido un ganador") if sorteo && GanadoresSorteo.where(sorteo_id: premio.sorteos.ids).any?
+  end
 end
 
 # == Schema Information
