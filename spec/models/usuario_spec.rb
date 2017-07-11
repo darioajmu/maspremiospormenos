@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Usuario, type: :model do
+  it { is_expected.to have_constant :ADMIN }
+  it { is_expected.to have_constant :USER }
+
   it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
   it { is_expected.to validate_presence_of :tipo_documento_id }
   it { is_expected.to validate_presence_of :documento }

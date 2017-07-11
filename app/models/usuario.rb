@@ -32,6 +32,8 @@ class Usuario < ActiveRecord::Base
     define_method "#{role_name}?" do
       role_ids.include?(role_id)
     end
+
+    self.const_set(role_name.upcase, role_ids.first)
   end
 
   def role
