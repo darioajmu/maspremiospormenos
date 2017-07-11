@@ -4,6 +4,8 @@ class Participacion < ActiveRecord::Base
 
   validates :usuario_id, presence: true
 
+  scope :no_usadas, -> { where(usada: false) }
+
   def make_participation_used
     update(usada: true)
   end
