@@ -6,6 +6,7 @@ RSpec.describe Sorteo, type: :model do
 
   it { is_expected.to validate_presence_of :premio_id }
   it { is_expected.to validate_presence_of :participacion_id }
+  it { is_expected.to validate_uniqueness_of :participacion_id }
 end
 
 # == Schema Information

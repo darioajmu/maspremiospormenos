@@ -3,7 +3,7 @@ class Sorteo < ActiveRecord::Base
   belongs_to :participacion
 
   validates :premio_id, presence: true
-  validates :participacion_id, presence: true
+  validates :participacion_id, presence: true, uniqueness: true
 end
 
 # == Schema Information
