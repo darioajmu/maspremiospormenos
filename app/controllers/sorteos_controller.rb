@@ -3,11 +3,11 @@ require 'premios_helper'
 class SorteosController < ApplicationController
   include PremiosHelper
 
-  skip_authorization_check
+  authorize_resource
 
   def assign_participation
     premio = Premio.find(params["premio_id"])
-    participaciones = Participacion.where(usuario_id: params["usuario_id"], usada: false)
+    participaciones = Participacion.where(usuario_id: current_usuario.id, usada: false)
     participaciones_restantes = set_missing_participations(premio)
 
     if participaciones_restantes > 0 && participaciones.any?
@@ -15,7 +15,7 @@ class SorteosController < ApplicationController
 
       create_sorteo(params["premio_id"], participacion.id)
 
-      use_participacion(participacion)
+      mark_participacion_as_used(participacion)
 
       premio.premio_completo if participaciones_restantes == 1
 
@@ -49,7 +49,7 @@ class SorteosController < ApplicationController
     Sorteo.create(premio_id: premio_id, participacion_id: participacion_id)
   end
 
-  def use_participacion(participacion)
+  def mark_participacion_as_used(participacion)
     participacion.make_participation_used
   end
 end

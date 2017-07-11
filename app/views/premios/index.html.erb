@@ -10,6 +10,7 @@
       <td> Fecha y Hora del Sorteo </td>
       <td> Número de participaciones del Sorteo </td>
       <td> Número de participaciones faltantes </td>
+      <td> Mis participaciones </td>
       <td> Añadir participacion </td>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
       <td> <%= premio.fecha_hora_sorteo.strftime('%d-%m-%Y %H:%M:%S') %> </td>
       <td> <%= premio.numero_participaciones %> </td>
       <td> <%= set_missing_participations(premio) %> </td>
+      <td> <%= set_my_participations(premio) %> </td>
       <td> <%= eval(link_to_assign(premio)) %> </td>
     </tr>
   <% end %>
