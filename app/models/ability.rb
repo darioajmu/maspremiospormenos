@@ -9,6 +9,7 @@ class Ability
         can [:read], GanadoresSorteo
         can [:solicitar], Participacion
         can [:read, :completos], Premio
+        can [:assign_participation], Sorteo
         can [:edit, :show], Usuario, id: usuario.id
       elsif usuario.admin?
         can :manage, :all
